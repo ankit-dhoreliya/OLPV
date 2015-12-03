@@ -1,0 +1,23 @@
+package org.itc.dao;
+
+
+import java.util.List;
+
+import org.itc.model.User;
+import org.itc.model.UserDetails;
+
+
+
+public interface UserDetailsDao {
+
+	public UserDetails  addUserDetails(UserDetails userDetails);
+	public UserDetails checkforId(User user);
+	public List<UserDetails> showUserDetails(int userId);
+	public UserDetails recordforid(int id);
+	
+	public List<UserDetails> usersList();
+	public UserDetails editUserdetails(int id);
+	
+	
+	
+}
