@@ -1,0 +1,80 @@
+package org.itc.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="service")
+public class ServiceType{
+	private int serviceId;
+	private String serviceName;
+	private int amount;
+	private String description;
+	//private Set<UserDetails> userdetails = new HashSet<UserDetails>(0);
+	
+	
+	
+	
+	public ServiceType() {
+		
+	}
+	
+	    public ServiceType(int serviceId, String serviceName) {
+		super();
+		this.serviceId = serviceId;
+		this.serviceName = serviceName;
+		//this.userdetails = userdetails;
+	}
+
+	@Id
+	@Column(name = "serviceId")
+	public int getserviceId() {
+		return serviceId;
+	}
+	public void setserviceId(int serviceId) {
+		this.serviceId = serviceId;
+	}
+	
+	@Column(name = "serviceName") 
+	public String getserviceName() {
+		return serviceName;
+	}
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
+	}
+	
+	public void setStatus(String serviceName) {
+		this.serviceName = serviceName;
+	}
+	
+	
+	@Column(name = "amount_in_Rupees")
+	 public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
+	@Column(name = "serviceDescription")
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "status")
+	public Set<UserDetails> getUserdetails() {
+		return userdetails;
+	}
+	public void setUserdetails(Set<UserDetails> userdetails) {
+		this.userdetails = userdetails;
+	}
+	*/
+	
+}
