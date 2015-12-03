@@ -1,0 +1,76 @@
+<style>
+div.padding{
+ padding-right: 25px;
+  padding-left: 25px;
+		}
+		
+table {
+    counter-reset: serial-number;
+}
+
+table tr {
+    counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.3em;
+}	
+
+	
+
+</style>
+
+<div data-ng-controller="adminController">
+	<div class="row">
+							<div class="col-md-9">
+								<h3>&nbsp;&nbsp; &nbsp;<span style="color:#80003f"><B>List of Applied Users</B></span></h3>
+							</div>
+							<div class="col-md-2">
+							<br>
+								<select class="form-control" id="sel1" data-ng-model="status" required>
+		                                  <option value="">Status</option>
+		     							  <option value="Open">Open</option>
+		     							  <option value="In-Progress">In-Progress</option>
+		     							  <option value="Rejected">Rejected</option>
+		     							  <option value="Verified">Verified</option>
+		     							  <option value="Closed">Closed</option>
+         						</select>
+							</div>
+						  </div>
+						<br>
+		<div class="padding">
+		<table class="table table-hover" border="2" >
+			<thead>
+  				<tr>
+  					<th width="30" bgcolor="#FF8566">Si.No</th>
+    				<th width="90" bgcolor="#FF8566">Date</th>
+    				<th width="140" bgcolor="#FF8566">Name</th>  
+    				<th width="340" bgcolor="#FF8566">Service Name</th>             
+   					<th width="90" bgcolor="#FF8566">Status</th>
+   					<th width="40" bgcolor="#FF8566"></th>
+   					
+       			</tr>
+			</thead>
+			<tbody>
+             		<tr data-ng-repeat="userDetails in (data | filter:status:status.status).slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) ">   
+             					 <td></td>
+             		          	 <td> {{ userDetails.subDate | date : 'MM-dd-yyyy' }} </td>
+                    			 <td> {{ userDetails.fullName }} </td>
+                    			 <td> {{ userDetails.serviceType.serviceName }} </td>
+                    			 <td><span style="color:#661a00"><B> {{ userDetails.status.status }}</B></span> </td>
+                    			 
+								 <td>
+								<button type="button" class="btn btn-xs btn-success" data-ng-click="editUser(userDetails.id)" ng-if="userDetails.status.status !=='Closed'" >View</button>
+								 </td>
+             				 </tr>
+            </tbody> 		 
+		</table>
+		
+  </div>
+ <div ng-show="data.length > itemsPerPage"> 
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+<uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage" ng-show ="blocked"></uib-pagination>
+</div>
+</div><br>
