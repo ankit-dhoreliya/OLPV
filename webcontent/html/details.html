@@ -1,0 +1,314 @@
+<style>
+    .error-message {
+      color: red;
+    }
+    input.ng-dirty.ng-invalid {
+      border-color: red;
+    }
+  </style>
+
+<div data-ng-controller="detailsController">
+	<div class="container">
+		 <form name="myForm" id="loginForm" class="pure-form login-form" data-ng-submit="submitForm(myForm.$valid)"  novalidate>
+				<h3><span style="color:blue">Select the Required service</span></h3>
+		<div class="row">
+			<div class="col-lg-6"> 	
+				<table class="table  table-bordered">
+					<thead>
+ 					 	<tr>
+					    		<th bgcolor="#FF8566">Si.No</th>
+					    		<th bgcolor="#FF8566">Name of the verification Certificate</th>             
+					    		<th bgcolor="#FF8566">Amount in Rupees</th>
+					        	<th bgcolor="#FF8566">Select appropriate service sought</th>
+					  		</tr>
+					</thead>
+					<tbody>
+							  <tr data-ng-repeat="serviceTable in dataTable">  
+								<td> {{ serviceTable.serviceId }} </td>
+								<td> {{ serviceTable.serviceName }} </td>
+								<td> {{ serviceTable. amount }} </td>
+								<td><input type="checkbox" name="check1" ng-model="result.serviceId" ng-true-value="{{serviceTable.serviceId}}" ng-required="!result.serviceId"></td>
+<!--    								 <td><input type="checkbox" ng-model="serviceId" ng-true-value="{{ serviceTable.serviceId }}" ng-change=" test(serviceTable.serviceId)"  ></td>
+ --> 							
+  						</tr>   
+						
+					<!--  <tr class="success">
+   							 <td>1</td>
+   							 <td>Police Verification Certificate for Job Purpose</td>         
+  							 <td>300</td>
+      						 <td><input type="checkbox" ng-model="service" ng-true-value="1" ng-required="!service" ></td>
+						</tr>
+						
+  					<tr class="danger">
+    						<td>2</td>
+    						<td>Police Verification Certificate for Marriage Alliances</td>        
+   							<td>500</td>
+							<td><input type="checkbox"  ng-model="service" ng-true-value="2" ng-required="!service" ></td>
+ 						 </tr>
+ 						 
+  						<tr class="info">
+    						<td>3</td>
+    						<td>Police Verification Certificate for NCC Students</td>        
+    						<td>50</td>
+							<td><input type="checkbox"  ng-model="service" ng-true-value="3" ng-required="!service" ></td>
+ 						</tr>
+ 						
+						<tr class="active">
+    						<td>4</td>
+    						<td>Police Verification Certificate for Addviewusers Verification</td>             
+    						<td>500</td>
+							<td><input type="checkbox"  ng-model="service" ng-true-value="4" ng-required="!service"></td>
+  						</tr>
+  						
+						<tr class="warning">
+   						 	<td>5</td>
+    						<td>Police Verification Certificate for Passport</td>            
+    						<td>800</td>
+							<td><input type="checkbox"  ng-model="service" ng-true-value="5" ng-required="!service"></td> 
+  						</tr>    -->
+					  </tbody>
+				</table>
+				<span ng-messages="myForm.check1.$error" ng-if="submitted">
+  					<span ng-message="required"> <span style="color:red">Please select a service</span></span>
+			   </span>
+			</div>
+		</div>
+	
+
+	
+		<h3><span style="color:blue">Please Enter Your Details</span></h3>
+			
+  					 <div class="row">
+  							 <div class="col-lg-3">
+   								 <label for="Name"><span style="color:black">Name</span></label>
+    							 <input type="text" class="form-control" name="user_fullname" data-ng-model="fullName" ng-pattern="/^[a-zA-Z\s]*$/"  id="Name"  placeholder="Name" required> 
+    							 <span ng-show="myForm.user_fullname.$error.pattern"><span style="color:red">Invalid...type only alphabets</span></span>
+    							 <span ng-messages="myForm.user_fullname.$error" ng-if='submitted'>
+  									<span ng-message="required"> <span style="color:red">This field is required</span></span>
+								</span>
+  							</div>
+  						 
+ 		 					 <div class="col-lg-3">
+     		 					<label for="Father/Husband Name"><span style="color:black">Father/Spouse Name</span></label>
+     		 					<input type="text"  name="user_fathername" class="form-control" id="F/HName" data-ng-model="fatherName" ng-pattern="/^[a-zA-Z_.-\s]*$/" placeholder="Father/Husband Name" required>
+     		 					 <span ng-show="myForm.user_fathername.$error.pattern"><span style="color:red">Invalid..type only alphabets</span></span>
+     		 					 <span ng-messages="myForm.user_fathername.$error" ng-if='submitted'>
+  									<span ng-message="required"> <span style="color:red">This field is required</span></span>
+								</span>
+     	  					</div>
+  		  				</div>
+   						<br>
+
+				<div class="row">
+  					<div class="col-lg-3">
+    		  					<label for="Gender"><span style="color:black">Gender</span></label><br>
+    							<label>
+    							<input type="radio"  name="Male" id="sel1"  data-ng-model="gender" value="Male" ng-required="!gender"/>Male</label>
+    							<label> &nbsp;&nbsp;&nbsp;&nbsp;
+    							<input type="radio"  name="Female" id="sel1"  data-ng-model="gender" value="Female" ng-required="!gender" />Female</label>
+    							<div ng-messages="myForm.sex.$error" ng-if='submitted'>
+  									<span ng-message="required"> <span style="color:red">This field is required</span></span>
+								</div>
+   			  		</div>
+   			  		<div class="col-lg-3">
+      					<label for="Date"><span style="color:black">DOB</span></label>
+      				    <input type="date"  class="form-control" name="datePicker" id="datepicker" data-ng-model="dateofbirth" data-date-options="dateOptions" data-custom-datepicker    placeholder="Date Of Birth" required/>
+      				     <span ng-messages="myForm.datePicker.$error" ng-if='submitted'>
+  							<span ng-message="required"> <span style="color:red">This field is required</span></span>
+						</span>
+      				</div>
+    			</div><br>
+   
+   		 		
+   		 		<div class="row">
+  					<div class="col-lg-3">
+  						<label for="Nationality"><span style="color:black">Nationality</span></label><br>
+  						<input type="text"  name="country"  class="form-control" typeahead-on-select="change(nationality)" ng-model="nationality"   typeahead-editable="false" typeahead="country  as country.contName for country in countries |  filter:$viewValue " placeholder="Country Name"  required />
+  						<span ng-messages="myForm.country.$error" ng-if='submitted'>
+  							<span ng-message="required"> <span style="color:red">This field is required</span></span>
+						</span>
+			<span ng-if="myForm.country.$dirty && myForm.country.$invalid"> <span style="color:red">Invalid Country</span>
+			</span>
+                    </div>
+   		 	    
+  					<div class="col-lg-3">
+     					<label for="Contact No"><span style="color:black">Contact Number</span></label>
+     						<input type="text" class="form-control" name="number" ng-model="number" ng-pattern="/^[ ()+]*([0-9][ ()+]*){12}$/" placeholder="Contact No" required/>
+    					<span ng-show="myForm.number.$dirty && myForm.number.$error.pattern"><span style="color:red">Please Enter 10 digit </span></span>
+    						<span ng-messages="myForm.number.$error" ng-if='submitted'>
+  							<span ng-message="required"> <span style="color:red">This field is required</span></span>
+  							</span>
+     				</div>
+   				</div><br>  
+
+  				<div class="row">
+   					<div class="col-lg-6">
+    	  				<label for="Adviewusers"><span style="color:black">Address</span></label>
+     	 				<input type="text" class="form-control" name="user_address" id="Addrs" data-ng-model="address" placeholder="Address" required>
+     	 				<span ng-messages="myForm.user_address.$error" ng-if='submitted'>
+  						<span ng-message="required"> <span style="color:red">This field is required</span></span>
+						</span>  
+    				</div>
+    			</div><br>
+    					
+			
+			
+			
+			<!-- FOR FILE UPLOADING -->
+				<div class="row">
+					<div class="col-sm-3">
+       					<input type="file" data-ng-file-select data-ng-model="myFile.file" id="document"  data-uploader="uploader" data-file-model="myFile" accept="application/pdf" class="form-control ng-pristine ng-valid"/>
+    					<span style="color:black" ><span style="font-size:10px">Maximum file size: 10 MB</span></span>
+					</div>&nbsp;&nbsp;
+					<button class="btn btn-info"   data-ng-click="addItem(myFile.file)" type="button"> Add </button> <br> <br> <br>
+				</div>
+				
+     			<div class="row">
+					<div class="col-lg-6">
+					<div ng-if="showTable">
+						<table class="table">
+      						<thead>
+             			 		<th>File name</th>
+        					</thead>      
+              				
+              				<tbody>
+             				 	<tr data-ng-repeat="itemObj in items">             
+                    			 	<td><span style="color:black">{{itemObj.file[0].name}}</span></td>
+                    			 	<td>
+                        				<input type="button" class="btn btn-danger" data-ng-click="removeItem(itemObj)" id="remove" value='Remove'>	
+									</td>
+             				 	</tr>
+      						</tbody>
+						</table> 
+						</div>  
+					</div> 
+      			</div>   
+              	<button id="open" class="btn btn-success"  ng-disabled="myForm.$error.pattern " ng-click="submitted=true"  ><span style="color:#FFFFFF">Register</span></button>         
+			</form><br>
+	</div>
+     
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
+    	<div class="modal-dialog" role="document">
+     		<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      						 <form id="loginForm" class="pure-form login-form" >
+       						<h2><span style="color:blue">Details Entered by You</span></h2>
+ 			
+				 		 			<label for="name"> FULL NAME</label>
+				 						<span style="padding-left:60px">
+				 							<B>-&nbsp;	{{viewuser.fullName		 |  uppercase}} </B>
+				 						</span><br>
+				 		
+				 			
+				 					<label for="name"> FATHER'S NAME </label>
+				 		 				<span style="padding-left:19px">
+				 							<B>-&nbsp; {{viewuser.fatherName 	 |  uppercase}}</B>
+				 						</span><br>
+				 		
+				 	 				<label>	GENDER 	</label>
+				 	  					<span style="padding-left:71px">
+				 							<B>-&nbsp;	{{viewuser.gender		 |  uppercase}} </B>
+				 					</span><br>
+				 		
+			 						<label>	NATIONALITY	</label>
+			 							<span style="padding-left:40px">
+				 							<B>-&nbsp;	{{viewuser.nationality	 |  uppercase}}</B>
+				 						</span><br>
+				 			
+				 					<label>	CONTACT NO	</label>
+				 	 					<span style="padding-left:40px">
+				 							<B>-&nbsp;	{{viewuser.contactNumber  |  uppercase}} </B>
+				 						</span><br>
+				 	
+				 					<label>	ADDRESS	</label>
+				 						 <span style="padding-left:65px">
+				 							<B>-&nbsp;	{{viewuser.address		 |  uppercase}} </B>
+				 						</span><br>
+				 		
+				 					<label>	DOB		</label>
+				 						 <span style="padding-left:100px">
+				 							<B>-&nbsp;	{{viewuser.dateofbirth | date : 'MM-dd-yyyy'}} </B>
+				 						</span><br>
+			
+							
+
+       						<h5 class="modal-title" id="myModalLabel">Registration Successful</h5>
+                            <h4><span style="color:#0000FF">That's it!!!. Please wait for 2 days to process your request</span></h4>
+                            </form>
+             	</div>
+                     	
+                         
+                                 <!--  <button type="button" class="btn btn-default" onClick="location.href='#/homepage.html'" data-dismiss="modal"><span style="color:#006600">Close</span></button> -->
+                                <button type="button" id="close" class="btn btn-danger" data-ng-click="Logout()" data-dismiss="modal"><span style="color:#006600">Log-out</span></button> 
+                          
+             </div>
+    	</div>
+	</div>
+       			
+       			<!-- showing modal for selceting two documents -->
+       			 <div class="modal fade" id="myModalErr1" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel">
+    				<div class="modal-dialog">
+    				 <!-- Modal content-->
+      					<div class="modal-content">
+        					<div class="modal-header">
+          						<h4 class="modal-title"><span style="color:red">Error</span></h4>
+       		 				</div>
+        					<div class="modal-body">
+          						<h5><span style="color:green">Please select two documents...</span></h5>
+        					</div>
+        					<div class="modal-footer">
+          						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        					</div>
+      					</div>
+      				</div>
+      			</div>
+      			
+      			 <!--  showing modal for open file before adding -->
+      			 <div class="modal fade" id="myModalErr2" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel">
+    				<div class="modal-dialog">
+    				 <!-- Modal content-->
+      					<div class="modal-content">
+        					<div class="modal-header">
+          						<h4 class="modal-title"><span style="color:red">Error</span></h4>
+       		 				</div>
+        					<div class="modal-body">
+          						<h5><span style="color:green">Please open a file before adding...</span></h5>
+        					</div>
+        					<div class="modal-footer">
+          						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        					</div>
+      					</div>
+      				</div>
+      			</div>
+      			
+      			<!--  Confirmation before saving user details -->
+      			<div class="modal fade" id="saveDetails" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel">
+    				<div class="modal-dialog">
+    				 <!-- Modal content-->
+      					<div class="modal-content">
+        					<div class="modal-header">
+          						<h4 class="modal-title"><span style="color:green">Do you want to save details...!!!</span></h4>
+       		 				</div>
+        					<div class="modal-body">
+          						<button type="button" class="btn btn-success" data-dismiss="modal" data-ng-click="submit()">Save</button>
+          						<button type="button" class="btn btn-warning" data-dismiss="modal" data-ng-click="editDetails()">Edit</button>
+        					</div>
+        				</div>
+      				</div>
+      			</div>
+			
+</div>  
+
+			
+			
+	<!-- '<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js"></script>' -->
+
+						
+            		
+									
+					
+                
+
+
+
