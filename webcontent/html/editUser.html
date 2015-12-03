@@ -1,0 +1,113 @@
+<style>
+
+.container-fluid { 
+  padding-left: 150px;
+  padding-right: 10px;
+}
+
+.panel{
+ background-color: #FFFFE3;
+
+}
+
+div.padding{
+ padding-right: 40px;
+  padding-left: 1px;
+		}
+
+</style>
+
+
+<div class="container-fluid">
+ <br>
+	<div class="col-lg-9">
+		<div class="panel panel-primary">
+			<div class="panel-heading"><h4>DETAILS ENTERED BY {{data.fullName |  uppercase}}..</h4></div>
+				<div class="panel-body">
+					<form id="loginForm" class="form-group" >
+ 				 		<label>&nbsp;	Full Name</label>
+				 		<span style="padding-left:63px">
+				 			<B>-&nbsp;	{{data.fullName		 |  uppercase}} </B>
+				 		</span><br>
+				 		
+						 <label>&nbsp;	FATHER'S NAME </label>
+						 <span style="padding-left:19px">
+						 	<B>	-&nbsp; {{data.fatherName 	 |  uppercase}}</B>
+						 </span><br>
+						 
+						 <label>&nbsp;	GENDER 	</label>
+						 <span style="padding-left:71px">
+						 	<B>-&nbsp;	{{data.gender		 |  uppercase}} </B>
+						 </span><br>
+						 	
+					 	<label>&nbsp;		NATIONALITY	</label>
+					 	<span style="padding-left:40px">
+						 	<B>-&nbsp;	{{data.nationality	 |  uppercase}}</B>
+						</span><br>
+						 	
+						<label>&nbsp;	CONTACT NO</label>
+						<span style="padding-left:40px">
+							<B>-&nbsp;	{{data.contactNumber  |  uppercase}} </B>
+						</span><br>
+						 	
+						<label>&nbsp;	ADDRESS	</label>
+						<span style="padding-left:65px">
+							<B>-&nbsp;	{{data.address		 |  uppercase}} </B>
+						</span><br>
+						
+						<label>&nbsp;	DOB	</label>
+						<span style="padding-left:100px">
+							<B>-&nbsp;	{{data.dateofbirth | date : 'MM-dd-yyyy'}} </B>
+						</span><br>
+						 	 
+						<label>&nbsp;	STATUS	</label>
+						<span style="padding-left:78px">
+							<B>-&nbsp;	{{data.status.status |  uppercase}} </B>
+						</span><br>	
+       			   </form>
+       		   </div>
+       		<div class="panel-footer" ng-if="data.comment">{{data.comment}}</div>
+   		</div>
+	</div>
+</div>
+    
+<div class="container">  
+	<div class="col-lg-9">
+		<div class="padding"> 
+			<div class="panel panel-primary"> 
+				<div class="panel-heading"><h4>DOCUMENTS...</h4></div>
+		  			<table>
+		  				<tbody>
+		  					<tr> 
+		  						<td  ng-repeat="pdfs in doc">
+		  		 					<iframe src="{{pdfs.docPath}}" width="390" height="500"></iframe>
+		  						</td>
+		  					</tr>
+		  				</tbody>
+		  			</table>
+		  	</div>
+		</div>
+	</div>
+    <br>
+	<form id="loginForm" class="pure-form login-form" data-ng-submit="submit()" >
+		<div class="row">
+			<div class="col-lg-4">
+				<label for="comment">Change the Status:</label>
+				<select class="form-control" ng-model="status" name="statusName" data-ng-options="obj.id as obj.name for obj in options" ng-change="statusChange()" required>
+					<option value="">{{data.status.status}}</option>
+				</select>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-5">
+		  		<label for="comment">Comment:</label>
+		  		<textarea class="form-control" rows="3" id="comment" ng-model="comment" ng-required="isRejected" ></textarea>
+		  		<div class="msg-block" ng-show="isRejected"> <span class="msg-error">Please specify a reason if the status Rejected.</span> </div>
+			</div>
+		</div>
+		<br>
+		<button type="submit" class="btn btn-success" >Submit</button> &nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn btn-warning" data-ng-click="comeback()" >Back &nbsp;</button>
+	</form> <br>
+</div>
