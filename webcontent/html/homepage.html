@@ -1,0 +1,197 @@
+
+<style>
+ .marquee {
+    width: 835px;
+    height: 30px;
+   
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #000;
+   
+ 
+    background-color: #0066cc;
+ 
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ 
+  -webkit-box-shadow: inset 0px 2px 2px rgba(0, 0, 0, .5), 0px 1px 0px rgba(250, 250, 250, .2);
+  box-shadow: inset 0px 2px 2px rgba(0, 0, 0, .5), 0px 1px 0px rgba(250, 250, 250, .2);
+}
+ </style>   
+
+<div class="container-fluid" >
+	<h3><span style="color:blue">Online Police Verification and Clearance System</span></h3>
+ 	<form id="loginForm" class="pure-form login-form" data-ng-submit="onLogin()" >
+    	<div class="row">
+     		<div class="col-lg-5">
+     			<label path="username" for="username"><span style="color:black">Username:</span></label>
+    			<input type="text" name="userName" path="userName" class="form-control" id="username" data-ng-model="userName1" placeholder="Username" required />
+    		</div>
+     	</div>
+ 	   
+   		<div class="row">
+    		<div class="col-lg-5">
+   				<label path="pwd" for="pwd"><span style="color:black">Password:</span></label>
+  				<input type="password" name="password" path="password" class="form-control" id="pwd" data-ng-model="password1" placeholder="Enter password" required />
+    		</div>
+   		</div>
+		
+		<div class="row">
+			<div class="col-lg-5">
+    			<label for="sel1"><span style="color:black">Role:</span></label>
+    				<select class="form-control" ng-model="role" data-ng-options="obj.id as obj.name for obj in options" required>
+    					<option value="">Role</option>
+    					<option>User</option>
+    					<option>Administrator</option>
+				</select>
+    		</div>
+    	</div><br>
+						
+    	<button type="submit" class="btn btn-info"><span style="color:#003300">&nbsp; Log-in &nbsp;</span></button> &nbsp;&nbsp;&nbsp;&nbsp;
+     	<a href="#mail" data-toggle="modal" data-target="#urModal" >Forgot Password</a> <br><br>
+	</form>  
+      		
+ 			
+ 	<button id="open" class="btn btn-success" data-toggle="modal" data-target="#myModal"  ><span style="color:#003300">New User</span></button><br><br>
+		<div class="row">
+			<div class="col-lg-7">
+				<div class="alert alert-success" role="alert" ng-show = "submitted">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   						<span aria-hidden="true">&times;</span>
+   					 	<span class="sr-only">Close</span>
+ 				    </button>
+ 						<strong>Success!</strong> Your Registration was Successful. PLease log-in to continue.
+				</div>
+			</div>
+		</div>
+					
+		<div class="row">
+			<div class="col-lg-7">
+				<div class="alert alert-danger" role="alert" ng-show = "loger">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    					<span aria-hidden="true">&times;</span>
+    					<span class="sr-only">Close</span>
+  					</button>
+  					<strong>Error..</strong> <span style="color:black">Invalid Username or Password.</span>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="row">
+			<div class="col-lg-7">
+				<div class="alert alert-success" role="alert" ng-show = "psswdsent">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   						<span aria-hidden="true">&times;</span>
+   						<span class="sr-only">Close</span>
+ 					</button>
+ 						<strong>Success!</strong> Your password has been sent to your email.
+				</div>
+			</div>
+		</div>
+					
+		<div class="row">
+			<div class="col-lg-7">
+				<div class="alert alert-danger" role="alert" ng-show = "Error">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   						<span aria-hidden="true">&times;</span>
+   					 	<span class="sr-only">Close</span>
+ 				    </button>
+ 						<strong>Can't Log-in......</strong> This user is already logged in.
+				</div>
+			</div>
+		</div>
+</div>		
+	<div class="row">
+		<div class="col-lg-11">
+            <div class="marquee">
+                <div id="helpline" style='width: 100%;padding: 0px;'>
+                    <table style='margin:0px;'>
+                        <tr style='padding: 0px;'>
+                            <td style='padding: 0px;'>
+                                <img src="images/helpline_sm.jpg" />
+                            </td>
+                            <td style=' color:White;'>
+                                <marquee onmouseover="this.setAttribute('scrollamount', 0, 0);" onmouseout="this.setAttribute('scrollamount', 5, 0);" style='width:750px'><img src="images/next3.png" style='height: 23px;vertical-align: middle;' /> Emergency Help - Dial <strong>100</strong> &nbsp;&nbsp;<img src="images/next3.png" style='height: 23px;vertical-align: middle;' /> Submission Queries - Dial
+                    <strong>103</strong>&nbsp;&nbsp;<img src="images/next3.png" style='height: 23px;vertical-align: middle;' />&nbsp;Login help line - Dial <strong>1098</strong> 
+                    &nbsp;&nbsp;<img src="images/next3.png" style='height: 23px;vertical-align: middle;' />&nbsp;Women's help line - Dial <strong>1091</strong> &nbsp;&nbsp;<img src="images/next3.png" style='height: 23px;vertical-align: middle;' />&nbsp;Elders Help line -  Dial <strong>1090</strong> &nbsp;&nbsp;</marquee>
+                            </td>
+                        </tr>
+                    </table>
+              </div>
+           </div>
+        </div>
+	</div>
+		
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
+	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+     		<div class="modal-header">
+      			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      			<h4 class="modal-title" id="myModalLabel">User Registration</h4>
+      		</div>
+      						 
+      		<div class="modal-body">
+				<form name="myForm" data-ng-submit="submit()" id="registerForm" class="form-signup"  >
+      				<h2 class="form-signup-heading"><span style="color:red">User Registration</span></h2>
+       					<label path="email" for="inputUsername" class="sr-only">Email address</label>
+     						    <input type="email" id="inputEmail" class="form-control" name="email" data-ng-model="email" placeholder="Email address" required autofocus />
+						 		<br>
+       					<label path="userName" for="inputUsername" class="sr-only">Username</label>
+        						<input type="text" id="inputUsername" name="USERname" class="form-control"  data-ng-model="userName" ng-pattern="/^[A-Za-z0-9_]{6,8}$/"   placeholder="Username" required />
+        						<span ng-show="myForm.USERname.$error.pattern"><span style="color:red">Username must contain minimum 6 characters  </span></span>
+       					 		<span ng-show="!invalidUser" > <span style="color:red">Username already exists</span></span>
+       					 		<br>
+   					   <label path="password" for="inputPassword" class="sr-only">Password</label>
+       					<input type="password" id="inputPassword1"   name="Password" class="form-control"  data-ng-model="passwordd" ng-pattern="/^[A-Za-z0-9_+@&$#!^%*-]{6,10}$/"  placeholder="Password" required />
+       					<span ng-show="myForm.Password.$error.pattern"><span style="color:red">Must contain minimum 6 characters</span></span>
+       				
+   					     		<br>
+     				    <label path="confirmPassword" for="inputPassword" class="sr-only">Confirm Password</label>
+     						 	<input type="password" id="inputPassword" class="form-control" ng-change="doPwdMatch()" name="password" data-ng-model="password2"  placeholder="Confirm Password" required />
+       			 		<div class="msg-block" ng-show="pwdDonotMatch"> <span class="msg-error">Passwords don't match.</span> </div>
+     					 		<br>
+       					<button type="submit" ng-disabled="myForm.$error.pattern"  class="btn btn-lg btn-primary" >Register</button>
+       			</form>
+     		</div> 
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="urModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
+ 	<div class="modal-dialog" role="document">
+   		<div class="modal-content">
+    		<div class="modal-header">
+       			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">Forgot Password</h4>
+      		</div>
+     		<div class="modal-body">
+     			<form data-ng-submit="forgot()" id="registerForm" class="form-signup"  >
+      				<h2 class="form-signup-heading"><span style="color:blue">Please Enter Required Details</span></h2> 
+       					<h6>Password will be sent to your Email Box</h6>
+       						<label path="email" for="inputUsername" class="sr-only">Email address</label>
+       						<input type="text" id="userName" class="form-control" name="userName" data-ng-model="userName" placeholder="User Name" required autofocus /> <br>
+       						
+       						<input type="email" id="inputEmail" class="form-control" name="email" data-ng-model="email1" placeholder="Email address" required autofocus />
+       						<span ng-show="invalidUserName"><span style="color:red">Invalid Username or Email</span></span>  <br>
+					<button type="submit" class="btn btn-lg btn-primary" >Submit</button>
+     			</form>
+     		</div> 
+ 		</div>
+	</div>
+</div>
+	
+	
+		
+
+
+
+
+
+
+
+ 	 
+	            
+        
+    
