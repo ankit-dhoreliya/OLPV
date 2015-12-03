@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+    	<meta charset="utf-8">
+      		<title>OLPV</title>
+ 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="bootstrap/css/docs.min.css" rel="stylesheet">
+		<link href="js/angular.min.js.map" rel="map">
+		<link href="js/angular-file-upload.min.map" rel="map">
+		<link href="bootstrap/css/bootstrap-social.css" rel="stylesheet">
+		<style>
+		
+			.footer {
+	      position: relative;
+	      margin-top: 250px; /* negative value of footer height */
+	      height: 5px;
+	      padding-top:10px;
+	      padding-left:500px
+	     } 
+	     
+	     
+
+	     
+	      .navbar-default {
+	  	 background-color: #ECF9FF;
+	 	 border-color: #271f1e;
+	 	 min-height:5px !important;
+		} 
+	
+		  div.transbox
+			{
+	 			
+	  			background-color:#CBCBB7;
+	  			border: 2px solid #00b33c;
+	  			
+	  			height:100%;
+	  			width : 100%;
+	  			padding:0;
+	  			margin:center;
+			}
+	
+			body 
+			{
+	  			background-image: url("images/Banglore.jpg");
+	  			background-size: cover;
+	  			background-repeat: no-repeat;
+	   		}
+	 
+    	</style>
+	
+		<script type="text/javascript" src="js/angular.min.js"></script> 
+		<script type="text/javascript" src="js/angular-messages.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-resource.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-route.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.1/ui-bootstrap-tpls.min.js"></script>
+		<script type="text/javascript" src="js/angular-file-upload-all.js"></script>
+		<script src="jquery/jquery.min.js"></script>
+		<script src="jquery/jquery-ui.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="js/main.js"></script> 
+		<script type="text/javascript" src="js/loginController.js"></script>
+		<script type="text/javascript" src="js/detailsController.js"></script>
+		<script type="text/javascript" src="js/viewDetailsController.js"></script> 
+		<script type="text/javascript" src="js/welcomeController.js"></script>
+		<script type="text/javascript" src="js/adminController.js"></script>
+		<script type="text/javascript" src="js/adminEditController.js"></script>
+	</head>
+
+    <body ng-app="myApp">
+		<nav class="navbar navbar-inverse ">
+        	<div class="container">
+            	<div class="navbar-header">
+                	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    	<span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span style="color:#009933">How it works</span></a>
+                </div>
+                               
+                <div class="navbar-collapse collapse">
+                	<div class="row">
+                    	<div class="col-lg-6">
+                        	<ul class="nav navbar-nav">
+                            	<li><a href="http://localhost:8080/OLPV/#/homepage">Home</a></li>
+                                <li><a href="#contact">Support</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                                <li><a href="#contact">Events</a></li>
+                                <li class="dropdown">
+	                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">INFO Zone <span class="caret"></span></a>
+	                                 
+	                                <ul class="dropdown-menu">
+		                                <li><a href="#">Process</a></li>
+		                                <li><a href="#">Query and Complaints</a></li>
+		                                <li><a href="#">Application Status</a></li>
+		                                <li role="separator" class="divider"></li>
+		                                <li class="dropdown-header">Know more</li>
+		                                <li><a href="#">Technology Partners</a></li>
+		                                <li><a href="#">Locations</a></li>
+	                                </ul>
+                                </li>
+                           </ul>
+                       </div>
+                       <div data-ng-controller="LogoutCtrl">
+                       	   <div class="col-lg-2">
+                           		<div ng-hide="logoutHide">
+                                	<div class="panel panel-default"><h5>Welcome<B><span style="color:red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{Username}}</span></B></h5></div>
+                                </div>
+                           </div>
+                           <div class="col-lg-1">
+                           		<div ><input type="button" class="btn btn-danger" data-ng-click="Logout()" ng-hide="logoutHide" value="Log-out"></div>  
+                           </div>
+                       </div>
+                       
+                  </div>
+            </div>
+      	</div>
+	</nav>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10"> 
+					<div class="transbox"> 
+				 		<div class="row">
+							<div class="col-lg-9">  
+		 						<img src="images/logo1.png" class="img-rounded"   width="939" height="100" span style="color:red"><br>
+		 					</div>
+						 </div>
+						 
+     						<ng-view></ng-view>
+     					 
+				 	</div><br><br>
+		   		</div>
+				</div>		
+        	</div>		
+		 
+      <nav class="navbar navbar-default navbar-fixed-bottom">
+	  		<footer>
+		    	<div class="container-fluid ">
+		         	<div class="row">
+		          		<div class="col-sm-3">
+		          			<h5>&copy; 2015, Bangalore City Police. All rights reserved.</h5>
+		          		</div>
+		          
+		          		<div class="col-sm-3">
+		          
+		          			<h5>The Commissioner of Police,
+					 			Bangalore City Police,
+					 			No:1 Infantry Road, Bangalore - 1. </h5>
+		          		</div>
+		          
+		          		<div class="col-sm-5">
+		          			<h5>Follow us:  
+		         				<a href='https://twitter.com' target='_blank'>
+                        			<img src="images/twitter.jpg" width="32" height="32" /></a>
+                        		<a href='https://www.facebook.com' target='_blank'>
+                            		<img src="images/fb.jpg" width="32" height="32" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            	<a style='text-decoration: none;'  href="#mail" data-toggle="modal" data-target="#ur2Modal">
+                                <img style="vertical-align: right" width="25px" src="images/Feedback_sm1.png" />
+                                COMPLAINT/FEEDBACK</a>&nbsp;&nbsp;&nbsp;
+                                <a style='text-decoration: none;' href="#mail" data-toggle="modal" data-target="#ur1Modal">
+                                 <img style='vertical-align: middle' src='images/Download_sm.png' />
+                                APPLICATION FORMS</a>
+                            </h5>
+            
+		         		</div>
+		       		</div>
+		    	 </div>
+   		   </footer>
+	  </nav>
+	   <div class="modal fade" id="ur1Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
+  		<div class="modal-dialog">
+    				 <!-- Modal content-->
+      					<div class="modal-content">
+        					<div class="modal-header">
+          						<h3 class="modal-title"><span style="color:green">Application Forms</span></h3>
+       		 				</div>
+        					<div class="modal-body">
+          						<h5><span style="color:red">Please Log-in or Register to download offline forms.</span></h5>
+        					</div>
+        					<div class="modal-footer">
+          						<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        					</div>
+      					</div>
+      	 </div>
+		</div>
+
+		<div class="modal fade" id="ur2Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="signUpController" >
+  			<div class="modal-dialog" role="document">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        				<h4 class="modal-title" id="myModalLabel">COMPLAINT/FEEDBACK</h4>
+      				</div>
+      				<div class="modal-body">
+      				 <form data-ng-submit="forgot12()" id="registerForm" class="form-signup"  >
+        				<h3 class="form-signup-heading"><span style="color:red">Please enter below details </span></h3> 
+        				<label path="email" for="inputUsername" class="sr-only">Email address</label>
+        				<input type="email" id="inputEmail" class="form-control" name="email" data-ng-model="email1" placeholder="Email address" required autofocus /> <br>
+        				<textarea class="form-control" rows="3" id="comment" ng-model="comment" placeholder="Your Compliant/Feedback" required ></textarea><br>
+						<button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Submit</button>
+     	 			 </form>
+      				</div> 
+    			</div>
+			</div>
+		</div>
+    </body>
+</html>
